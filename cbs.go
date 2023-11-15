@@ -389,9 +389,9 @@ func GenerateCardMessageContent(cards ...*cardMessage) (res string, err error) {
 	for _, v := range cards {
 		cardMessageContent = append(cardMessageContent, v)
 	}
-	marshal, err := json.Marshal(cardMessageContent)
+	indent, err := json.MarshalIndent(cardMessageContent, "", "  ")
 	if err != nil {
 		return "", err
 	}
-	return string(marshal), nil
+	return string(indent), nil
 }
