@@ -39,8 +39,7 @@ const (
 	DayCountdown    CountdownMode = "day"
 	HourCountdown   CountdownMode = "hour"
 	SecondCountdown CountdownMode = "second"
-)
-const (
+
 	CardThemePrimary   CardTheme = "primary"
 	CardThemeSecondary CardTheme = "secondary"
 	CardThemeSuccess   CardTheme = "success"
@@ -55,18 +54,15 @@ const (
 	ButtonThemeWarning   ButtonTheme = "warning"
 	ButtonThemeDanger    ButtonTheme = "danger"
 	ButtonThemeInfo      ButtonTheme = "info"
-)
-const (
+
 	TextColorSuccess TextColor = "success"
 	TextColorPurple  TextColor = "purple"
 	TextColorWarning TextColor = "warning"
 	TextColorPink    TextColor = "pink"
-)
-const (
+
 	Kmarkdown TextType = "kmarkdown"
 	Plain     TextType = "plain-text"
-)
-const (
+
 	Left  Position = "left"
 	Right Position = "right"
 )
