@@ -52,15 +52,20 @@
 **最后调用`GenerateCardMessageContent()` 生成 `Post` 参数中的 `Content`**
 
 ```go
-   c  := NewDefaultCard()
-   c.AddColorText(TextColorSuccess,"Hello! 这是一个测试")
-   c1  := NewDefaultCard()
-   c1.AddColorText(TextColorSuccess,"Hello! 这是一个测试")
-   res , err := GenerateCardMessageContent(c,c1)
-   if err != nil{
-	return ""
-    }
-   return res
+func CardMessageCreate()(error,string){
+    c  := NewDefaultCard()
+    c.AddColorText(TextColorSuccess,"Hello! 这是一个测试")
+
+    c1  := NewDefaultCard()
+    c1.AddColorText(TextColorSuccess,"Hello! 这是一个测试")
+
+    res , err := GenerateCardMessageContent(c,c1)
+    if err != nil{
+        return err,""
+	}
+    return nil,res	
+}
+
 ```
 
 太累了。我先B了，改明儿再写。
