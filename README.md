@@ -21,12 +21,26 @@
 - `func (c *cardMessage) AddKmarkdown(s string)` - 添加`Kmarkdown`文本。仅需要一个文本参数。
 - `func (c *cardMessage) AddFields(s []string)` - 添加多列文本。接受`[]string`参数，其中sting为文本。请注意，多列文本的上下展示效果由`\n`实现。
 
-> - ```go
->   示例
->   c  := kook_CardBuild.NewDefaultCard()
->   fields := []string{"**昵称**\n怪才君","**服务器**\n活动中心","**在线时间**\n9:00-21:00"}
->   c.AddFields(fields)
->   ```
+```go
+package main
+
+import (
+	"github.com/Quinlivanner/kook-CardBuild"
+)
+
+func CardMessageCreate() (error, string) {
+
+	c := kook_CardBuild.NewDefaultCard()
+	fields := []string{"**昵称**\n怪才君", "**服务器**\n活动中心", "**在线时间**\n9:00-21:00"}
+	c.AddFields(fields)
+
+	res, err := kook_CardBuild.GenerateCardMessageContent(c)
+	if err != nil {
+		return err, ""
+	}
+	return nil, res
+}
+```
 
 - `func (c *cardMessage) AddColorText(tc TextColor, s string)` - 添加彩色文字，Kook提供四种字体颜色，
 
