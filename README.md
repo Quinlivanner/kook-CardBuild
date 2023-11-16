@@ -7,7 +7,7 @@
 **创建卡片**：我们提供两种初始化卡片
 
 - **`NewDefaultCard()`**  初始化一张默认的卡片。
-- **`NewCardWithOption(t CardTheme, s CardSize, c string)`**  初始化一张自定义参数的卡片，在当前规则下，我建议使用`c string`即`color`参数来控制卡片消息的左边框颜色。
+- **`NewCardWithOption(t CardTheme, s CardSize, c string)`**  初始化一张自定义参数的卡片，在当前规则下，我建议使用`c string`即`color`参数来控制卡片消息的左边框颜色，使用 `Hex Code`。
 
 > - **`SetCardTheme()`**
 > - **`SetCardColor`()**
