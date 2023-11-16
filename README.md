@@ -53,6 +53,7 @@
 
 ```go
 func CardMessageCreate()(error,string){
+	
     c  := NewDefaultCard()
     c.AddColorText(TextColorSuccess,"Hello! 这是一个测试")
 
