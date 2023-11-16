@@ -354,17 +354,17 @@ func (c *cardMessage) AddButtonGroup(ButtonGroups []ButtonCreate) {
 func (c *cardMessage) AddNotes(notesDetails []NotesCreate) {
 	var temN = []interface{}{}
 	for _, v := range notesDetails {
-		if v.types == TextNoteType {
+		if v.Types == TextNoteType {
 			temN = append(temN, noteText{Type: TextNoteType, Content: v.Value})
 		}
-		if v.types == ImgNotetype {
+		if v.Types == ImgNotetype {
 			temN = append(temN, noteImage{Type: ImgNotetype, Src: v.Value})
 		}
 	}
 	c.Modules = append(c.Modules, Notes{Type: "context", Elements: temN})
 	return
 }
-func (c *cardMessage) AddNormalCountdown(countdownMode CountdownMode, endTime, startTime int64) {
+func (c *cardMessage) AddCountdown(countdownMode CountdownMode, endTime, startTime int64) {
 	if countdownMode == SecondCountdown {
 		c.Modules = append(c.Modules, SecondCountDown{Type: "countdown", Mode: countdownMode, EndTime: endTime, StartTime: startTime})
 	} else {
