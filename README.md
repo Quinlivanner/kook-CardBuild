@@ -136,7 +136,6 @@ func CardMessageCreate() (error, string) {
 	}
 	return nil, res
 }
-
 ```
 
 太累了。我先B了，改明儿再写。
