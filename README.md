@@ -54,7 +54,9 @@
 ```go
 package main
 
-import "github.com/Quinlivanner/kook-CardBuild"
+import (
+	"github.com/Quinlivanner/kook-CardBuild"
+)
 
 func CardMessageCreate() (error, string) {
 
@@ -70,8 +72,6 @@ func CardMessageCreate() (error, string) {
 	}
 	return nil, res
 }
-
-
 ```
 
 太累了。我先B了，改明儿再写。
