@@ -52,20 +52,25 @@
 **最后调用`kook_CardBuild.GenerateCardMessageContent()` 生成 `Post` 参数中的 `Content`**
 
 ```go
-func CardMessageCreate()(error,string){
-	
-    c  :=kook_CardBuild.NewDefaultCard()
-    c.AddColorText(TextColorSuccess,"Hello! 这是一个测试")
+package main
 
-    c1  := kook_CardBuild.NewDefaultCard()
-    c1.AddColorText(TextColorSuccess,"Hello! 这是一个测试")
+import "github.com/Quinlivanner/kook-CardBuild"
 
-    res , err := kook_CardBuild.GenerateCardMessageContent(c,c1)
-    if err != nil{
-        return err,""
+func CardMessageCreate() (error, string) {
+
+	c := kook_CardBuild.NewDefaultCard()
+	c.AddColorText(kook_CardBuild.TextColorSuccess, "Hello! 这是一个测试")
+
+	c1 := kook_CardBuild.NewDefaultCard()
+	c1.AddColorText(kook_CardBuild.TextColorSuccess, "Hello! 这是一个测试")
+
+	res, err := kook_CardBuild.GenerateCardMessageContent(c, c1)
+	if err != nil {
+		return err, ""
 	}
-    return nil,res	
+	return nil, res
 }
+
 
 ```
 
