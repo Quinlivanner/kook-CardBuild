@@ -185,7 +185,7 @@ type noteImage struct {
 	Src  string    `json:"src"`
 }
 type NotesCreate struct {
-	types NotesType
+	Types NotesType
 	Value string
 }
 
