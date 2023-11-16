@@ -23,7 +23,7 @@
 
 > - ```go
 >   示例
->   c  := NewDefaultCard()
+>   c  := kook_CardBuild.NewDefaultCard()
 >   fields := []string{"**昵称**\n怪才君","**服务器**\n活动中心","**在线时间**\n9:00-21:00"}
 >   c.AddFields(fields)
 >   ```
@@ -37,30 +37,30 @@
 >   TextColorPink    TextColor = "pink"
 >   
 >   示例
->    c  := NewDefaultCard()
->    c.AddColorText(TextColorSuccess,"Hello! 这是一个测试")
+>    c  := kook_CardBuild.NewDefaultCard()
+>    c.AddColorText(kook_CardBuild.TextColorSuccess,"Hello! 这是一个测试")
 >   ```
 
 - ``func (c *cardMessage) AddTextWithPics(tt TextType, content string, imagePosition Position, imgUrl string, imgSize ImgSize)`` - 添加文本+图片。
 
 > - ```go
->   c  := NewDefaultCard()
+>   c  := kook_CardBuild.NewDefaultCard()
 >   c.AddTextWithPics(`Kmarkdown`,"Hello! 这是一个测试",Left,"图片链接",ImgSizeSizeLg)
 >   ```
 
 **其他方法以此类推**
-**最后调用`GenerateCardMessageContent()` 生成 `Post` 参数中的 `Content`**
+**最后调用`kook_CardBuild.GenerateCardMessageContent()` 生成 `Post` 参数中的 `Content`**
 
 ```go
 func CardMessageCreate()(error,string){
 	
-    c  := NewDefaultCard()
+    c  :=kook_CardBuild.NewDefaultCard()
     c.AddColorText(TextColorSuccess,"Hello! 这是一个测试")
 
-    c1  := NewDefaultCard()
+    c1  := kook_CardBuild.NewDefaultCard()
     c1.AddColorText(TextColorSuccess,"Hello! 这是一个测试")
 
-    res , err := GenerateCardMessageContent(c,c1)
+    res , err := kook_CardBuild.GenerateCardMessageContent(c,c1)
     if err != nil{
         return err,""
 	}
