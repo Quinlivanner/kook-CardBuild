@@ -75,7 +75,57 @@ import (
 func CardMessageCreate() (error, string) {
 
 	c := kook_CardBuild.NewDefaultCard()
+
+	c.SetCardSize(kook_CardBuild.CardSizeLg)
+	err := c.SetCardColor("#FFFFFF")
+	if err != nil {
+		return err, ""
+	}
+
+	c.AddText("Hello! 这是一个测试")
+	c.AddKmarkdown("Hello! 这是一个测试")
+
+	fields := []string{"**昵称**\n怪才君", "**服务器**\n活动中心", "**在线时间**\n9:00-21:00"}
+	c.AddFields(fields)
+
 	c.AddColorText(kook_CardBuild.TextColorSuccess, "Hello! 这是一个测试")
+
+	c.AddTextWithPics(`Kmarkdown`, "Hello! 这是一个测试", kook_CardBuild.Left, "https://img.kookapp.cn/assets/avatar_2.jpg", kook_CardBuild.ImgSizeSizeLg)
+
+	c.AddTextWithButton(kook_CardBuild.Kmarkdown, "点击按钮参与测试", kook_CardBuild.ButtonThemeDanger, "测试按钮")
+
+	c.AddImage("https://img.kookapp.cn/assets/avatar_2.jpg")
+
+	imgUrls := []string{"https://img.kookapp.cn/assets/avatar_2.jpg", "https://img.kookapp.cn/assets/avatar_2.jpg", "https://img.kookapp.cn/assets/avatar_2.jpg"}
+	c.AddImageGroup(imgUrls)
+
+	c.AddHeader("Hello！这是一个测试")
+
+	//分割线，无需任何内容
+	c.AddDivider()
+
+	tb := []kook_CardBuild.ButtonCreate{}
+	//添加跳转按钮，点击按钮后，将会跳转到Value中的链接
+	tb = append(tb, kook_CardBuild.ButtonCreate{ButtonType: kook_CardBuild.LinkButton, Value: "https://img.kookapp.cn/assets/avatar_2.jpg",
+		Theme: kook_CardBuild.ButtonThemeDanger, ButtonText: "测试按钮"})
+	//添加返回值按钮，点击按钮后，返回的value参数的值。
+	tb = append(tb, kook_CardBuild.ButtonCreate{ButtonType: kook_CardBuild.ReturnBUtton, Value: "Clicked",
+		Theme: kook_CardBuild.ButtonThemeDanger, ButtonText: "测试按钮"})
+	c.AddButtonGroup(tb)
+
+	tn := []kook_CardBuild.NotesCreate{}
+	//文字
+	tn = append(tn, kook_CardBuild.NotesCreate{Types: kook_CardBuild.TextNoteType, Value: "这是一个测试"})
+	//图片
+	tn = append(tn, kook_CardBuild.NotesCreate{Types: kook_CardBuild.ImgNotetype, Value: "https://img.kookapp.cn/assets/avatar_2.jpg"})
+	c.AddNotes(tn)
+
+	//读秒倒计时，倒计时中，仅有读秒倒计时的starttime需要具体参数
+	c.AddCountdown(kook_CardBuild.SecondCountdown, 1700149391000, 1700149391000)
+	//小时倒计时
+	c.AddCountdown(kook_CardBuild.HourCountdown, 1700149391000, 0)
+	//常规倒计时
+	c.AddCountdown(kook_CardBuild.DayCountdown, 1700149391000, 0)
 
 	c1 := kook_CardBuild.NewDefaultCard()
 	c1.AddColorText(kook_CardBuild.TextColorSuccess, "Hello! 这是一个测试")
@@ -86,6 +136,7 @@ func CardMessageCreate() (error, string) {
 	}
 	return nil, res
 }
+
 ```
 
 太累了。我先B了，改明儿再写。
