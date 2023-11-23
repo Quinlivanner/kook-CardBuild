@@ -33,7 +33,7 @@ const (
 	LinkButton   ButtonType = "link"
 	ReturnBUtton ButtonType = "return-val"
 
-	KmarkdownNoteType           = "kmarkdown"
+	KmarkdownNoteType NotesType = "kmarkdown"
 	TextNoteType      NotesType = "plain-text"
 	ImgNotetype       NotesType = "image"
 
