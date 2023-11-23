@@ -361,15 +361,15 @@ func (c *cardMessage) AddButtonGroup(ButtonGroups []ButtonCreate) {
 func (c *cardMessage) AddNotes(notesDetails []NotesCreate) {
 	var temN = []interface{}{}
 	for _, v := range notesDetails {
-		if v.Types == KmarkdownNoteType {
+		switch v.Types {
+		case TextNoteType:
+			temN = append(temN, noteText{Type: TextNoteType, Content: v.Value})
+		case ImgNotetype:
+			temN = append(temN, noteImage{Type: ImgNotetype, Src: v.Value})
+		case KmarkdownNoteType:
 			temN = append(temN, noteKmarkdown{Type: KmarkdownNoteType, Content: v.Value})
 		}
-		if v.Types == TextNoteType {
-			temN = append(temN, noteText{Type: TextNoteType, Content: v.Value})
-		}
-		if v.Types == ImgNotetype {
-			temN = append(temN, noteImage{Type: ImgNotetype, Src: v.Value})
-		}
+
 	}
 	c.Modules = append(c.Modules, Notes{Type: "context", Elements: temN})
 	return
