@@ -33,8 +33,9 @@ const (
 	LinkButton   ButtonType = "link"
 	ReturnBUtton ButtonType = "return-val"
 
-	TextNoteType NotesType = "plain-text"
-	ImgNotetype  NotesType = "image"
+	KmarkdownNoteType           = "kmarkdown"
+	TextNoteType      NotesType = "plain-text"
+	ImgNotetype       NotesType = "image"
 
 	DayCountdown    CountdownMode = "day"
 	HourCountdown   CountdownMode = "hour"
@@ -184,6 +185,12 @@ type noteImage struct {
 	Type NotesType `json:"type"`
 	Src  string    `json:"src"`
 }
+
+type noteKmarkdown struct {
+	Type    NotesType `json:"type"`
+	Content string    `json:"content"`
+}
+
 type NotesCreate struct {
 	Types NotesType
 	Value string
@@ -354,6 +361,9 @@ func (c *cardMessage) AddButtonGroup(ButtonGroups []ButtonCreate) {
 func (c *cardMessage) AddNotes(notesDetails []NotesCreate) {
 	var temN = []interface{}{}
 	for _, v := range notesDetails {
+		if v.Types == KmarkdownNoteType {
+			temN = append(temN, noteKmarkdown{Type: KmarkdownNoteType, Content: v.Value})
+		}
 		if v.Types == TextNoteType {
 			temN = append(temN, noteText{Type: TextNoteType, Content: v.Value})
 		}
