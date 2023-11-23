@@ -33,9 +33,8 @@ const (
 	LinkButton   ButtonType = "link"
 	ReturnBUtton ButtonType = "return-val"
 
-	TextNoteType      NotesType = "plain-text"
-	ImgNotetype       NotesType = "image"
-	KmarkdownNoteType           = "kmarkdown"
+	TextNoteType NotesType = "plain-text"
+	ImgNotetype  NotesType = "image"
 
 	DayCountdown    CountdownMode = "day"
 	HourCountdown   CountdownMode = "hour"
@@ -355,13 +354,11 @@ func (c *cardMessage) AddButtonGroup(ButtonGroups []ButtonCreate) {
 func (c *cardMessage) AddNotes(notesDetails []NotesCreate) {
 	var temN = []interface{}{}
 	for _, v := range notesDetails {
-		switch v.Types {
-		case TextNoteType:
+		if v.Types == TextNoteType {
 			temN = append(temN, noteText{Type: TextNoteType, Content: v.Value})
-		case ImgNotetype:
+		}
+		if v.Types == ImgNotetype {
 			temN = append(temN, noteImage{Type: ImgNotetype, Src: v.Value})
-		case KmarkdownNoteType:
-			temN = append(temN, noteText{Type: KmarkdownNoteType, Content: v.Value})
 		}
 	}
 	c.Modules = append(c.Modules, Notes{Type: "context", Elements: temN})
