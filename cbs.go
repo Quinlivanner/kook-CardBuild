@@ -260,7 +260,7 @@ func (c *cardMessage) AddKmarkdown(s string) {
 	}{Type: "kmarkdown", Content: s}})
 	return
 }
-func (c *cardMessage) AddFields(s []string) {
+func (c *cardMessage) AddFields(s []string ， cols int) {
 	var filedsContent = []FiledsContent{}
 	for _, v := range s {
 		filedsContent = append(filedsContent, FiledsContent{Type: "kmarkdown", Content: v})
@@ -268,7 +268,7 @@ func (c *cardMessage) AddFields(s []string) {
 	c.Modules = append(c.Modules, Fields{Type: "section",
 		Text: FieledsText{
 			Type:   "paragraph",
-			Cols:   len(s),
+			Cols:   cols,
 			Fields: filedsContent,
 		}})
 	return
